@@ -1,0 +1,21 @@
+{
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "start": "vite",
+    "build": "vite build",
+    "server": "node vite_express_server.js"
+  },
+  "dependencies": {
+    "@solidjs/router": "^0.4.3",
+    "@supabase/supabase-js": "^1.35.6",
+    "express": "^4.18.1",
+    "gun": "^0.2020.1238",
+    "solid-js": "^1.5.4",
+    "solid-meta": "^0.28.1",
+    "solid-utils": "^0.8.1",
+    "vite-plugin-solid": "^2.3.0"
+  }
+}
