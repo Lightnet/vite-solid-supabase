@@ -1,15 +1,21 @@
+/*
+  Project Name: ss-rts
+  License: MIT
+  Created by: Lightnet
+*/
 
-
+// https://stackoverflow.com/questions/71159169/how-to-update-entire-row-in-supabase-table-getting-400-error
 
 //import { AuthSession } from '@supabase/supabase-js'
 import { createEffect, createSignal } from 'solid-js'
 import { supabase } from '../../libs/supabaseclient'
+import Avatar from './Avatar'
 
 const Account = ({ session }) => {
   const [loading, setLoading] = createSignal(true)
-  const [username, setUsername] = createSignal("")
-  const [website, setWebsite] = createSignal("")
-  const [avatarUrl, setAvatarUrl] = createSignal("")
+  const [username, setUsername] = createSignal("test")
+  const [website, setWebsite] = createSignal("E")
+  const [avatarUrl, setAvatarUrl] = createSignal(null)
 
   createEffect(() => {
     getProfile()
@@ -18,10 +24,12 @@ const Account = ({ session }) => {
   const getProfile = async () => {
     try {
       setLoading(true)
+      //console.log(session)
       const { user } = session
 
       let { data, error, status } = await supabase
         .from('profiles')
+        //.select(`username, website, avatar_url`)
         .select(`username, website, avatar_url`)
         .eq('id', user.id)
         .single()
@@ -31,6 +39,7 @@ const Account = ({ session }) => {
       }
 
       if (data) {
+        console.log(data)
         setUsername(data.username)
         setWebsite(data.website)
         setAvatarUrl(data.avatar_url)
@@ -45,7 +54,7 @@ const Account = ({ session }) => {
   }
 
   const updateProfile = async (e) => {
-    e.preventDefault()
+    //e.preventDefault()
 
     try {
       setLoading(true)
@@ -58,8 +67,10 @@ const Account = ({ session }) => {
         avatar_url: avatarUrl(),
         updated_at: new Date().toISOString(),
       }
+      console.log(updates)
 
-      let { error } = await supabase.from('profiles').upsert(updates)
+      //let { data, error } = await supabase.from('profiles').insert([updates])
+      let { data, error } = await supabase.from('profiles').upsert(updates)
 
       if (error) {
         throw error
@@ -75,7 +86,6 @@ const Account = ({ session }) => {
 
   return (
     <div aria-live="polite">
-      <form onSubmit={updateProfile} class="form-widget">
         <div>Email: {session.user.email}</div>
         <div>
           <label for="username">Name</label>
@@ -96,14 +106,23 @@ const Account = ({ session }) => {
           />
         </div>
         <div>
-          <button type="submit" class="button primary block" disabled={loading()}>
+          <Avatar 
+            url={avatarUrl()}
+            size={64}
+            onUpload={(url) => {
+              setAvatarUrl(url)
+              updateProfile({})
+            }}
+          />
+        </div>
+        <div>
+          <button type="submit" class="button primary block" onClick={updateProfile} disabled={loading()}>
             {loading() ? 'Saving ...' : 'Update profile'}
           </button>
         </div>
         <button type="button" class="button block" onClick={() => supabase.auth.signOut()}>
           Sign Out
         </button>
-      </form>
     </div>
   )
 }

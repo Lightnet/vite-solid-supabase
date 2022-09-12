@@ -1,4 +1,8 @@
-
+/*
+  Project Name: vite-solid-supabase
+  License: MIT
+  Created by: Lightnet
+*/
 
 import { createClient } from '@supabase/supabase-js'
 
