@@ -9,6 +9,27 @@
 
   Update to fit the solid context and Provider for handle access auth. To have router to handle page url.
 
+```
+App
+
+  AuthProvider (top root level of the context)
+    - session 
+    - createEffect
+      - check for supabase.auth.onAuthStateChange
+        - update session
+  
+  - Router
+      - index ( page )
+        - check which element render for login or account
+        - login 
+        - Account ( jsx )
+          - get auth context > session
+          - get / update data
+      - about ( page )
+        - display information
+```
+
+
 # Set up:
 ```
 npm install 

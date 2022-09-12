@@ -9,12 +9,12 @@ import "./styles.css";
 import { 
   createSignal
 , lazy
-, observable 
-, from
-, createMemo
-, createResource
-, createEffect 
-, onCleanup
+//, observable 
+//, from
+//, createMemo
+//, createResource
+//, createEffect 
+//, onCleanup
 } from 'solid-js';
 import { MetaProvider } from 'solid-meta';
 import { createApp } from 'solid-utils';
