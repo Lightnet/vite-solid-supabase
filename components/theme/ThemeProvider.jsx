@@ -1,5 +1,5 @@
 /*
-  Project Name: solid-trois
+  Project Name: vite-solid-supabase
   License: MIT
   Created by: Lightnet
 */

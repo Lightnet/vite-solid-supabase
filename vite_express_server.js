@@ -1,5 +1,5 @@
 /*
-  Project Name: solid-trois
+  Project Name: vite-solid-supabase
   License: MIT
   Created by: Lightnet
 */
@@ -9,7 +9,6 @@ import path from 'path'
 import express from 'express'
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
-import Gun from "gun";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
@@ -54,21 +53,7 @@ async function createServer() {
     //console.log(app);
     console.log(`> Running on http://localhost:`+PORT);
   })
-  var gun;
-  gun = Gun({
-    web: server
-  });
-
-  gun.on("hi", peer => {
-    //peer connect
-    //console.log('connect peer to',peer);
-    console.log("peer connect!");
-  });
-  gun.on("bye", peer => {
-    // peer disconnect
-    //console.log('disconnected from', peer);
-    console.log("disconnected from peer!");
-  });
+  
   console.log("init server...")
 }
 

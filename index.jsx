@@ -1,5 +1,5 @@
 /*
-  Project Name: ss-rts
+  Project Name: vite-solid-supabase
   License: MIT
   Created by: Lightnet
 */

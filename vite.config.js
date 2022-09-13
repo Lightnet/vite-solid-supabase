@@ -1,5 +1,5 @@
 /*
-  Project Name: solid-trois
+  Project Name: vite-solid-supabase
   License: MIT
   Created by: Lightnet
 */
@@ -7,7 +7,6 @@
 // vite.config.ts
 import { defineConfig } from 'vite';
 import solidPlugin from 'vite-plugin-solid';
-//import gunPlugin from "./vite-plugin-gun.js"
 
 export default defineConfig({
   //server: {
@@ -17,6 +16,5 @@ export default defineConfig({
   //},
   plugins: [
     solidPlugin()
-    //,gunPlugin()
   ],
 });

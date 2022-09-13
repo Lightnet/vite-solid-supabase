@@ -4,6 +4,8 @@
   Created by: Lightnet
 */
 
+// https://supabase.com/docs/reference/javascript/auth-onauthstatechange
+
 import { 
   createSignal
 , createEffect
