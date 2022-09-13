@@ -13,7 +13,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 import { createServer as createViteServer } from 'vite'
-import * as vite from 'vite'
+//import * as vite from 'vite'
 
 console.log("srcipt server.js")
 
@@ -53,7 +53,7 @@ async function createServer() {
     //console.log(app);
     console.log(`> Running on http://localhost:`+PORT);
   })
-  
+
   console.log("init server...")
 }
 
