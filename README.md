@@ -37,14 +37,15 @@ App
         - display information
 ```
 
-
 # Set up:
+
+  Install Nodejs
+
 ```
 npm install 
 
 npm run server
 ```
-
 
 # .env
 ```

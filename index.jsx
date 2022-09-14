@@ -7,14 +7,8 @@
 import "./styles.css";
 
 import { 
-  createSignal
+  Suspense 
 , lazy
-//, observable 
-//, from
-//, createMemo
-//, createResource
-//, createEffect 
-//, onCleanup
 } from 'solid-js';
 import { MetaProvider } from 'solid-meta';
 import { createApp } from 'solid-utils';
@@ -23,6 +17,7 @@ import ThemeProvider from "./components/theme/ThemeProvider";
 import IndexMenus from "./components/IndexMenus";
 import Home from './pages/index.jsx';
 import { AuthProvider } from "./components/auth/AuthProvider";
+import Loading from "./components/Loading";
 
 const routes = [
   {
@@ -46,7 +41,9 @@ const App = () => {
     <ThemeProvider>
       <AuthProvider>
         <IndexMenus/>
-        <Route />
+        <Suspense fallback={<Loading/>}>
+          <Route />
+        </Suspense>
       </AuthProvider>
     </ThemeProvider>
   );
